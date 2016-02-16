@@ -6,8 +6,6 @@
     mkdir ~/.vim/plugin -p
     cp seq.vim ~/.vim/plugin/
 
-    也可以使用bundle来管理
-
 用法:
     :[line1,line2]Seq [start] [step] [format]
         line1  指定起始行 默认为第一行
