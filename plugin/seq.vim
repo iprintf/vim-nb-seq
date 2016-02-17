@@ -14,7 +14,7 @@
 "
 "
 function! KyoNBArgs(args)
-    let ret = [1, 1, '%d']
+    let ret = [1, 1, '%d ']
     let l = len(a:args)
 
     " echo a:args
@@ -95,7 +95,7 @@ function! KyoNBSeq(...) range
 
     for lineno in range(a:firstline, a:lastline)
         let line = getline(lineno)
-        let newline = KyoNBFormat(opt[2], opt[0]).' '.line
+        let newline = KyoNBFormat(opt[2], opt[0]).line
         call setline(lineno, newline)
         let opt[0] = opt[0] + opt[1]
     endfor
