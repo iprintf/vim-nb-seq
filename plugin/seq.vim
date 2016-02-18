@@ -92,10 +92,20 @@ endfunction
 function! KyoNBSeq(...) range
 "{
     let opt = KyoNBArgs(a:000)
+    let indent_num = 80
+
+    for lineno in range(a:firstline, a:lastline)
+        let id = indent(lineno)
+        if indent_num > id
+            let indent_num = id
+        endif
+    endfor
 
     for lineno in range(a:firstline, a:lastline)
         let line = getline(lineno)
-        let newline = KyoNBFormat(opt[2], opt[0]).line
+        let newline = strpart(line, 0, indent_num)
+        let newline = newline.KyoNBFormat(opt[2], opt[0])
+        let newline = newline.strpart(line, indent_num)
         call setline(lineno, newline)
         let opt[0] = opt[0] + opt[1]
     endfor
